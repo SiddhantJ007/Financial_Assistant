@@ -40,7 +40,7 @@
     let requestData = { age, risk, horizon };
 
     try {
-        let response = await fetch("https://ffxc59a748.execute-api.us-east-2.amazonaws.com", {
+        let response = await fetch("https://ffxc59a748.execute-api.us-east-2.amazonaws.com/recommend", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(requestData)
