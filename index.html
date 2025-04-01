@@ -7,40 +7,52 @@
 <body>
     <h1>Investment Advisor</h1>
     <form id="investment-form">
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age" required><br><br>
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" required><br>
 
-        <label for="horizon">Investment Horizon:</label>
-        <select id="horizon" name="horizon" required>
-            <option value="short">Short-term</option>
-            <option value="medium">Medium-term</option>
-            <option value="long">Long-term</option>
-        </select><br><br>
+    <label for="risk">Risk Tolerance:</label>
+    <select id="risk" name="risk">
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+    </select><br>
 
-        <label for="risk">Risk Tolerance:</label>
-        <select id="risk" name="risk" required>
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
-        </select><br><br>
+    <label for="horizon">Investment Horizon:</label>
+    <select id="horizon" name="horizon">
+        <option value="short">Short-term</option>
+        <option value="medium">Medium-term</option>
+        <option value="long">Long-term</option>
+    </select><br>
 
-        <button type="submit">Get Recommendation</button>
-    </form>
+    <button type="submit">Get Recommendation</button>
+</form>
 
-    <div id="recommendation"></div>
+<p id="recommendation"></p>
 
     <script>
-        document.getElementById('investment-form').onsubmit = async function(event) {
-            event.preventDefault();
-            const formData = new FormData(event.target);
-            const response = await fetch('YOUR_API_GATEWAY_URL', {
-                method: 'POST',
-                body: JSON.stringify(Object.fromEntries(formData)),
-                headers: { 'Content-Type': 'application/json' }
-            });
-            const result = await response.json();
-            document.getElementById('recommendation').innerText = result.body;
-        };
-    </script>
+    document.getElementById("investment-form").addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    let age = document.getElementById("age").value;
+    let risk = document.getElementById("risk").value;
+    let horizon = document.getElementById("horizon").value;
+
+    let requestData = { age, risk, horizon };
+
+    try {
+        let response = await fetch("YOUR_AWS_API_GATEWAY_URL", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(requestData)
+        });
+
+        let result = await response.json();
+        document.getElementById("recommendation").innerText = "Recommended Investment: " + result.recommendation;
+    } catch (error) {
+        console.error("Error:", error);
+        document.getElementById("recommendation").innerText = "Error fetching recommendation.";
+    }
+});
+</script>
 </body>
 </html>
