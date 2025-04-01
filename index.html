@@ -40,7 +40,7 @@
     let requestData = { age, risk, horizon };
 
     try {
-        let response = await fetch("arn:aws:apigateway:us-east-2::/apis/ffxc59a748/routes/gzl4g8n", {
+        let response = await fetch("https://ffxc59a748.execute-api.us-east-2.amazonaws.com", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(requestData)
