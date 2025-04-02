@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -54,5 +54,41 @@ document.getElementById("investment-form").addEventListener("submit", async func
     }
 });
 </script>
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Investment Advisor</title>
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <h1>Investment Advisor</h1>
+    <form id="investmentForm">
+        <label for="age">Age:</label>
+        <input type="number" id="age" required>
+
+        <label for="risk">Risk Tolerance:</label>
+        <select id="risk">
+            <option value="low">Low</option>
+            <option value="moderate">Moderate</option>
+            <option value="high">High</option>
+        </select>
+
+        <label for="horizon">Investment Horizon:</label>
+        <select id="horizon">
+            <option value="short">Short-Term</option>
+            <option value="long">Long-Term</option>
+        </select>
+
+        <button type="submit">Get Recommendation</button>
+    </form>
+
+    <h2>Recommendation:</h2>
+    <div id="investmentResult"></div>
 </body>
 </html>
