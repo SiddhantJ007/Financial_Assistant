@@ -30,7 +30,7 @@
 <p id="recommendation"></p>
 
     <script>
-    document.getElementById("investment-form").addEventListener("submit", async function(event) {
+document.getElementById("investment-form").addEventListener("submit", async function(event) {
     event.preventDefault();
 
     let age = document.getElementById("age").value;
@@ -40,34 +40,18 @@
     let requestData = { age, risk, horizon };
 
     try {
-        fetch('https://ffxc59a748.execute-api.us-east-2.amazonaws.com/recommend', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-        age: userAge,
-        risk: userRisk,
-        horizon: userHorizon
-    })
-})
-.then(response => response.json())
-.then(data => {
-    if (data.recommendations && data.recommendations.length > 0) {
-        const recommendation = data.recommendations[0]; // Get first recommendation
-        document.getElementById('investmentResult').innerHTML = 
-            `<strong>Recommended Investment:</strong> ${recommendation.investment} <br>
-             <strong>Reason:</strong> ${recommendation.reason} <br>
-             <strong>Advice:</strong> ${data.advice} <br>
-             <strong>Disclaimer:</strong> ${data.disclaimer}`;
-    } else {
-        document.getElementById('investmentResult').innerHTML = 
-            `<strong>No specific recommendation found.</strong> Please try adjusting your inputs.`;
+        let response = await fetch("YOUR_AWS_API_GATEWAY_URL", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(requestData)
+        });
+
+        let result = await response.json();
+        document.getElementById("recommendation").innerText = "Recommended Investment: " + result.recommendation;
+    } catch (error) {
+        console.error("Error:", error);
+        document.getElementById("recommendation").innerText = "Error fetching recommendation.";
     }
-})
-.catch(error => {
-    console.error('Error fetching recommendation:', error);
-    document.getElementById('investmentResult').innerHTML = "Error fetching investment recommendation.";
 });
 </script>
 </body>
