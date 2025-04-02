@@ -25,7 +25,7 @@ document.getElementById('investmentForm').addEventListener('submit', function(ev
         if (data.recommendation) {
             document.getElementById('recommendation').innerHTML = `
                 <strong>Investment Type:</strong> ${data.recommendation} <br>
-                <strong>Reason:</strong> ${data.reason};
+                ${data.reason};
         } else {
             document.getElementById('recommendation').innerHTML = 
                 `<strong>No recommendation found.</strong> Try adjusting your inputs.`;
