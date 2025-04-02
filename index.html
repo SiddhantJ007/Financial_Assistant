@@ -68,21 +68,31 @@ document.getElementById("investment-form").addEventListener("submit", async func
 </head>
 <body>
     <div class="container">
-        <h1>Investment Advisor</h1>
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age" required>
+        <header>
+            <h1>Smart Investment Advisor</h1>
+            <p>Get personalized investment recommendations based on your profile.</p>
+        </header>
         
-        <label for="risk">Risk Ability:</label>
-        <select id="risk" name="risk">
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
-        </select>
+        <div class="form-container">
+            <label for="age">Enter Your Age:</label>
+            <input type="number" id="age" name="age" required>
+            
+            <label for="risk">Select Your Risk Ability:</label>
+            <select id="risk" name="risk">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+            
+            <button onclick="getRecommendation()">Get Recommendation</button>
+        </div>
         
-        <button onclick="getRecommendation()">Get Recommendation</button>
-        <p id="recommendation"></p>
+        <div id="recommendation-box">
+            <h2>Recommendation:</h2>
+            <p id="recommendation"></p>
+        </div>
         
-        <p class="disclaimer">Investments are subject to market risks. Please consult a financial advisor before making decisions.</p>
+        <p class="disclaimer">Note: Investments are subject to market risks. This is a recommendation based on your input, not financial advice.</p>
     </div>
     
     <script src="script.js"></script>
