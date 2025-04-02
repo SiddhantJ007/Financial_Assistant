@@ -23,11 +23,11 @@ document.getElementById('investmentForm').addEventListener('submit', function(ev
         console.log("API Response:", data); // Debugging log
 
         if (data.recommendation) {
-            document.getElementById('investmentResult').innerHTML = `
+            document.getElementById('recommendation').innerHTML = `
                 <strong>Investment Type:</strong> ${data.recommendation} <br>
                 <strong>Reason:</strong> ${data.reason};
         } else {
-            document.getElementById('investmentResult').innerHTML = 
+            document.getElementById('recommendation').innerHTML = 
                 `<strong>No recommendation found.</strong> Try adjusting your inputs.`;
         }
     })
