@@ -1,5 +1,5 @@
 document.getElementById('recommend-btn').addEventListener('click', function(event) {
-    event.preventDefault(); // Prevents unintended behavior
+    event.preventDefault();
 
     // Collect user input
     const userAge = document.getElementById('age').value;
@@ -31,7 +31,8 @@ document.getElementById('recommend-btn').addEventListener('click', function(even
         if (data.recommendation) {
             document.getElementById('recommendation').innerHTML = `
                 <strong>Investment Type:</strong> ${data.recommendation} <br>
-                ${data.reason}
+                <strong>Reason:</strong> ${data.reason} <br>
+                <span style="color: gray; font-size: small;"><i>${data.disclaimer}</i></span>
             `;
         } else {
             document.getElementById('recommendation').innerHTML = 
