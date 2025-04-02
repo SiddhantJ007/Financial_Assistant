@@ -63,38 +63,38 @@ document.getElementById("investment-form").addEventListener("submit", async func
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investment Recommendation</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Smart Investment Advisor</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Smart Investment Advisor</h1>
-            <p>Get personalized investment recommendations based on your profile.</p>
-        </header>
-        
-        <div class="form-container">
-            <label for="age">Enter Your Age:</label>
-            <input type="number" id="age" name="age" required>
-            
-            <label for="risk">Select Your Risk Ability:</label>
-            <select id="risk" name="risk">
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
-            </select>
-            
-            <button onclick="getRecommendation()">Get Recommendation</button>
+    <header>
+        <h1>Smart Investment Advisor</h1>
+        <p>Get personalized investment recommendations based on your profile.</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="input-section">
+                <label for="age">Enter Your Age:</label>
+                <input type="number" id="age" placeholder="e.g., 25">
+                
+                <label for="risk">Select Your Risk Ability:</label>
+                <select id="risk">
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
+
+                <button id="recommend-btn">Get Recommendation</button>
+            </div>
+
+            <div class="output-section">
+                <h2>Recommendation:</h2>
+                <p id="recommendation"></p>
+                <p class="disclaimer">Note: Investments are subject to market risks. This is a recommendation based on your input, not financial advice.</p>
+            </div>
         </div>
-        
-        <div id="recommendation-box">
-            <h2>Recommendation:</h2>
-            <p id="recommendation"></p>
-        </div>
-        
-        <p class="disclaimer">Note: Investments are subject to market risks. This is a recommendation based on your input, not financial advice.</p>
-    </div>
-    
-    <script src="script.js"></script>
+    </main>
 </body>
 </html>
