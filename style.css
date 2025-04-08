@@ -1,3 +1,10 @@
+/* Protect original styling inside site-wrapper */
+.site-wrapper * {
+    all: revert !important;
+    font-family: 'Arial', sans-serif !important;
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(to right, #1e3c72, #2a5298);
