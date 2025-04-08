@@ -44,3 +44,21 @@ document.getElementById('recommend-btn').addEventListener('click', function(even
         document.getElementById('recommendation').innerHTML = "Error retrieving investment advice.";
     });
 });
+ (function(d, t) {
+        var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+        v.onload = function() {
+          if (!document.getElementById('root')) {
+            var root = d.createElement('div');
+            root.id = 'root';
+            d.body.appendChild(root);
+          }
+          if (window.myChatWidget && typeof window.myChatWidget.load === 'function') {
+            window.myChatWidget.load({
+              id: 'cea1afb2-0765-47b2-95a7-447e33e52ef7',
+            });
+          }
+        };
+        v.src = "https://agentivehub.com/production.bundle.min.js";
+        v.type = "text/javascript";
+        s.parentNode.insertBefore(v, s);
+      })(document, 'script');
