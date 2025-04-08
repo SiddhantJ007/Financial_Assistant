@@ -1,37 +1,36 @@
+// Load Agentive GPT Chatbot AFTER your UI is styled
 (function(d, t) {
-        var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-        v.onload = function() {
-          if (!document.getElementById('root')) {
-            var root = d.createElement('div');
-            root.id = 'root';
-            d.body.appendChild(root);
-          }
-          if (window.myChatWidget && typeof window.myChatWidget.load === 'function') {
-            window.myChatWidget.load({
-              id: 'cea1afb2-0765-47b2-95a7-447e33e52ef7',
-            });
-          }
-        };
-        v.src = "https://agentivehub.com/production.bundle.min.js";
-        v.type = "text/javascript";
-        s.parentNode.insertBefore(v, s);
-      })(document, 'script');
+  var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+  v.onload = function() {
+    if (!document.getElementById('root')) {
+      var root = d.createElement('div');
+      root.id = 'root';
+      d.body.appendChild(root);
+    }
+    if (window.myChatWidget && typeof window.myChatWidget.load === 'function') {
+      window.myChatWidget.load({
+        id: 'cea1afb2-0765-47b2-95a7-447e33e52ef7', // your Agentive bot ID
+      });
+    }
+  };
+  v.src = "https://agentivehub.com/production.bundle.min.js";
+  v.type = "text/javascript";
+  s.parentNode.insertBefore(v, s);
+})(document, 'script');
 
+// Existing recommendation engine logic (optional — keep/remove)
 document.getElementById('recommend-btn').addEventListener('click', function(event) {
     event.preventDefault();
 
-    // Collect user input
     const userAge = document.getElementById('age').value;
     const userRisk = document.getElementById('risk').value;
     const userHorizon = document.getElementById('horizon').value;
 
-    // Validate input
     if (!userAge) {
         document.getElementById('recommendation').innerText = "Please enter your age.";
         return;
     }
 
-    // API request
     fetch('https://ffxc59a748.execute-api.us-east-2.amazonaws.com/recommend', {
         method: 'POST',
         headers: {
@@ -45,8 +44,6 @@ document.getElementById('recommend-btn').addEventListener('click', function(even
     })
     .then(response => response.json())
     .then(data => {
-        console.log("API Response:", data); // Debugging log
-
         if (data.recommendation) {
             document.getElementById('recommendation').innerHTML = `
                 <strong>Investment Type:</strong> ${data.recommendation} <br>
