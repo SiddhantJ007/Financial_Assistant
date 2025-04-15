@@ -59,3 +59,49 @@ document.getElementById('chat-send').addEventListener('click', function () {
         document.getElementById('chat-response').innerText = "Error fetching response.";
     });
 });
+
+// === Floating Chatbot UI Toggle & Send ===
+const chatToggle = document.getElementById("chat-toggle");
+const chatBox = document.getElementById("chat-box");
+const chatInput = document.getElementById("chat-input");
+const chatMessages = document.getElementById("chat-messages");
+
+chatToggle.addEventListener("click", () => {
+  chatBox.style.display = chatBox.style.display === "flex" ? "none" : "flex";
+});
+
+document.getElementById("chat-send").addEventListener("click", () => {
+  const input = chatInput.value.trim();
+  if (!input) return;
+
+  appendMessage(input, 'user');
+  chatInput.value = "";
+  appendMessage("Typing...", 'bot');
+
+  fetch("https://YOUR-LAMBDA-ENDPOINT/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ user_input: input })
+  })
+    .then(res => res.json())
+    .then(data => {
+      // Remove "Typing..."
+      const allMessages = chatMessages.querySelectorAll('.bot-message');
+      if (allMessages.length) {
+        allMessages[allMessages.length - 1].remove();
+      }
+      appendMessage(data.response, 'bot');
+    })
+    .catch(err => {
+      console.error("Chat error:", err);
+      appendMessage("Sorry, something went wrong.", 'bot');
+    });
+});
+
+function appendMessage(text, sender) {
+  const div = document.createElement("div");
+  div.className = sender === 'user' ? "user-message" : "bot-message";
+  div.textContent = text;
+  chatMessages.appendChild(div);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
