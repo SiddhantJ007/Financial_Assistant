@@ -45,7 +45,7 @@ document.getElementById('chat-send').addEventListener('click', function () {
 
     document.getElementById('chat-response').innerHTML = "Thinking...";
 
-    fetch("https://ffxc59a748.execute-api.us-east-2.amazonaws.com/chat", {
+    fetch("https://ffxc59a748.execute-api.us-east-2.amazonaws.com", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ user_input: input })
@@ -78,7 +78,7 @@ document.getElementById("chat-send").addEventListener("click", () => {
   chatInput.value = "";
   appendMessage("Typing...", 'bot');
 
-  fetch("https://ffxc59a748.execute-api.us-east-2.amazonaws.com/chat", {
+  fetch("https://ffxc59a748.execute-api.us-east-2.amazonaws.com", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ user_input: input })
