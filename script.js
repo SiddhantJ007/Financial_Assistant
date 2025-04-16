@@ -1,4 +1,24 @@
-// === Recommendation Button (Existing Logic) ===
+// Load Agentive GPT Chatbot AFTER your UI is styled
+(function(d, t) {
+  var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+  v.onload = function() {
+    if (!document.getElementById('root')) {
+      var root = d.createElement('div');
+      root.id = 'root';
+      d.body.appendChild(root);
+    }
+    if (window.myChatWidget && typeof window.myChatWidget.load === 'function') {
+      window.myChatWidget.load({
+        id: 'cea1afb2-0765-47b2-95a7-447e33e52ef7', // your Agentive bot ID
+      });
+    }
+  };
+  v.src = "https://agentivehub.com/production.bundle.min.js";
+  v.type = "text/javascript";
+  s.parentNode.insertBefore(v, s);
+})(document, 'script');
+
+// Existing recommendation engine logic (optional — keep/remove)
 document.getElementById('recommend-btn').addEventListener('click', function(event) {
     event.preventDefault();
 
@@ -13,7 +33,9 @@ document.getElementById('recommend-btn').addEventListener('click', function(even
 
     fetch('https://ffxc59a748.execute-api.us-east-2.amazonaws.com/recommend', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+            'Content-Type': 'application/json'
+        },
         body: JSON.stringify({
             age: userAge,
             risk: userRisk,
@@ -23,13 +45,14 @@ document.getElementById('recommend-btn').addEventListener('click', function(even
     .then(response => response.json())
     .then(data => {
         if (data.recommendation) {
-            document.getElementById('recommendation').innerHTML = `
-                <strong>Investment Type:</strong> ${data.recommendation}<br>
-                <strong>Reason:</strong> ${data.reason}<br>
+            document.getElementById('recommendation').innerHTML = 
+                <strong>Investment Type:</strong> ${data.recommendation} <br>
+                <strong>Reason:</strong> ${data.reason} <br>
                 <span style="color: gray; font-size: small;"><i>${data.disclaimer}</i></span>
-            `;
+            ;
         } else {
-            document.getElementById('recommendation').innerHTML = `<strong>No recommendation found.</strong>`;
+            document.getElementById('recommendation').innerHTML = 
+                <strong>No recommendation found.</strong> Try adjusting your inputs.;
         }
     })
     .catch(error => {
@@ -37,71 +60,3 @@ document.getElementById('recommend-btn').addEventListener('click', function(even
         document.getElementById('recommendation').innerHTML = "Error retrieving investment advice.";
     });
 });
-
-// === New Chatbot GPT + Finhub Integration ===
-document.getElementById('chat-send').addEventListener('click', function () {
-    const input = document.getElementById('chat-input').value;
-    if (!input) return;
-
-    document.getElementById('chat-response').innerHTML = "Thinking...";
-
-    fetch("https://ffxc59a748.execute-api.us-east-2.amazonaws.com/Stage_1", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ user_input: input })
-    })
-    .then(res => res.json())
-    .then(data => {
-        document.getElementById('chat-response').innerText = data.response;
-    })
-    .catch(err => {
-        console.error("GPT Error:", err);
-        document.getElementById('chat-response').innerText = "Error fetching response.";
-    });
-});
-
-// === Floating Chatbot UI Toggle & Send ===
-const chatToggle = document.getElementById("chat-toggle");
-const chatBox = document.getElementById("chat-box");
-const chatInput = document.getElementById("chat-input");
-const chatMessages = document.getElementById("chat-messages");
-
-chatToggle.addEventListener("click", () => {
-  chatBox.style.display = chatBox.style.display === "flex" ? "none" : "flex";
-});
-
-document.getElementById("chat-send").addEventListener("click", () => {
-  const input = chatInput.value.trim();
-  if (!input) return;
-
-  appendMessage(input, 'user');
-  chatInput.value = "";
-  appendMessage("Typing...", 'bot');
-
-  fetch("https://ffxc59a748.execute-api.us-east-2.amazonaws.com/Stage_1", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ user_input: input })
-  })
-    .then(res => res.json())
-    .then(data => {
-      // Remove "Typing..."
-      const allMessages = chatMessages.querySelectorAll('.bot-message');
-      if (allMessages.length) {
-        allMessages[allMessages.length - 1].remove();
-      }
-      appendMessage(data.response, 'bot');
-    })
-    .catch(err => {
-      console.error("Chat error:", err);
-      appendMessage("Sorry, something went wrong.", 'bot');
-    });
-});
-
-function appendMessage(text, sender) {
-  const div = document.createElement("div");
-  div.className = sender === 'user' ? "user-message" : "bot-message";
-  div.textContent = text;
-  chatMessages.appendChild(div);
-  chatMessages.scrollTop = chatMessages.scrollHeight;
-}
