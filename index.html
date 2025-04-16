@@ -92,7 +92,7 @@ document.getElementById("investment-form").addEventListener("submit", async func
 
           <div class="form-group">
             <label for="horizon">Investment Horizon:</label>
-            <select id="horizon">
+            <select id="horizon" name="horizon">
               <option value="short">Short-term</option>
               <option value="medium">Medium-term</option>
               <option value="long">Long-term</option>
@@ -105,27 +105,9 @@ document.getElementById("investment-form").addEventListener("submit", async func
         <div class="output-section">
           <p id="recommendation"></p>
         </div>
-
-        <hr style="margin: 30px 0;">
-
-        <div class="chat-section">
-          <h2>Chat with Advisor</h2>
-          <input type="text" id="chat-input" placeholder="Ask me about a stock, investing tip, etc...">
-          <button id="chat-send">Send</button>
-          <div id="chat-response"></div>
-        </div>
       </div>
     </main>
   </div>
-    <!-- Floating Chat Widget -->
-<div id="chat-widget">
-  <button id="chat-toggle">💬 Chat</button>
-  <div id="chat-box">
-    <div id="chat-messages"></div>
-    <input type="text" id="chat-input" placeholder="Ask me about a stock or investment...">
-    <button id="chat-send">Send</button>
-  </div>
-</div>
-<script src="script.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
