@@ -26,8 +26,8 @@ document.getElementById('recommend-btn').addEventListener('click', function(even
     .then(data => {
         if (data.recommendation) {
             document.getElementById('recommendation').innerHTML = 
-                <strong>Investment Type:</strong> ${data.recommendation} <br>
-                <strong>Reason:</strong> ${data.reason} <br>
+                Investment Type: ${data.recommendation} <br>
+                Reason: ${data.reason} <br>
                 <span style="color: gray; font-size: small;"><i>${data.disclaimer}</i></span>
             ;
         } else {
