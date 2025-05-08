@@ -39,43 +39,46 @@ header {
     color: #007bff;
 }
 
-.main-content {
+.background-section {
+    height: 600px;
+    background-image: url('advisor_bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 80px;
-    gap: 50px;
+    position: relative;
 }
 
-.advisor-image {
-    flex: 1;
-    max-width: 400px;
-}
-
-.advisor-image img {
+.background-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
 }
 
-.info-box {
-    flex: 1;
-    background-color: #1a2a44;
-    padding: 40px;
-    border-radius: 10px;
+.content-box {
+    position: relative;
+    z-index: 2;
+    text-align: center;
     color: #ffffff;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    background-color: rgba(26, 42, 68, 0.8);
+    padding: 30px;
+    border-radius: 10px;
 }
 
-.info-box h1 {
+.content-box h1 {
     font-size: 2.5em;
     margin-bottom: 10px;
 }
 
-.info-box p {
-    font-size: 1.1em;
-    line-height: 1.6;
+.content-box p {
+    font-size: 1.2em;
     margin-bottom: 20px;
 }
 
