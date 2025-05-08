@@ -1,97 +1,77 @@
-/* GLOBAL RESET / SCOPING */
-.site-wrapper * {
-  all: revert !important;
-  font-family: 'Segoe UI', sans-serif !important;
-  box-sizing: border-box;
-}
-
-/* GENERAL LAYOUT */
-body {
-  background: linear-gradient(to right, #1e3c72, #2a5298);
-  color: white;
-  padding: 30px;
-  margin: 0;
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: #fff;
 }
 
 header {
-  text-align: center;
-  margin-bottom: 30px;
+    background-color: #2a5298;
+    padding: 60px;
+    text-align: center;
+    color: #fff;
 }
 
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
 }
 
-p {
-  font-size: 1.1rem;
+header p {
+    font-size: 1.2em;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-/* CONTAINER & FORM */
-.container {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 30px 40px;
-  border-radius: 15px;
-  max-width: 500px;
-  margin: auto;
-  box-shadow: 0 0 25px rgba(0,0,0,0.3);
-  backdrop-filter: blur(8px);
+.services-section, .how-it-works, .about-section {
+    padding: 50px 20px;
+    text-align: center;
 }
 
-.form-section {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+.services-grid, .steps-grid {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    margin-top: 20px;
 }
 
-.form-group {
-  text-align: left;
+.service-card, .step-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    color: #333;
+    transition: transform 0.3s;
 }
 
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
+.service-card:hover, .step-card:hover {
+    transform: scale(1.05);
 }
 
-input, select {
-  width: 100%;
-  padding: 12px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 8px;
-  outline: none;
-  background-color: #f8f9fa;
-  color: #333;
+.service-card img {
+    width: 50px;
+    margin-bottom: 15px;
 }
 
-input:focus, select:focus {
-  border: 2px solid #2a5298;
-  background-color: #fff;
+.about-section {
+    background-color: #2a5298;
+    color: #fff;
+    padding: 40px;
+    text-align: center;
 }
 
-/* BUTTON */
-button {
-  padding: 14px;
-  font-size: 1.1rem;
-  color: white;
-  background-color: #ff9800;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s;
+footer {
+    background-color: #1e3c72;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
 }
 
-button:hover {
-  background-color: #e68900;
+footer a {
+    color: #ff9800;
+    text-decoration: none;
 }
 
-/* OUTPUT */
-.output-section {
-  margin-top: 25px;
-  background: rgba(0, 0, 0, 0.1);
-  padding: 15px;
-  border-radius: 8px;
-  font-size: 1rem;
-  color: #f1f1f1;
+footer a:hover {
+    text-decoration: underline;
 }
