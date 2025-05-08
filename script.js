@@ -17,6 +17,17 @@
   s.parentNode.insertBefore(v, s);
 })(document, 'script');
 
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+
+/*
 document.getElementById('recommend-btn').addEventListener('click', function(event) {
   event.preventDefault();
 
@@ -53,3 +64,4 @@ document.getElementById('recommend-btn').addEventListener('click', function(even
       "Error retrieving investment advice.";
   });
 });
+*/
