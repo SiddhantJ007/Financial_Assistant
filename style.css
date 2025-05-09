@@ -24,7 +24,7 @@ header {
 
 /* nav pushed to the far right of the flex row */
 .nav-links{
-  margin-left:auto;          /* ⬅ pushes nav to the right */
+  margin-left:60px;          /* ⬅ pushes nav to the right */
   display:flex;
   gap:32px;
   list-style:none;
