@@ -24,7 +24,7 @@ header {
 
 /* nav pushed to the far right of the flex row */
 .nav-links{
-  margin-left:360px;          /* ⬅ pushes nav to the right */
+  margin-left:560px;          /* ⬅ pushes nav to the right */
   display:flex;
   gap:32px;
   list-style:none;
@@ -40,10 +40,10 @@ header {
 
 /* ---------- HERO / BACKGROUND ---------- */
 .background-section{
-  height:150vh;
+  height:120vh;
   background:url('advisor_bg.png') center/cover no-repeat;
   display:flex;
-  align-items:left;
+  align-items:center;
   position:relative;
 }
 
