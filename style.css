@@ -55,7 +55,7 @@ header {
 
 .content-box{
   position:relative;          /* sits above overlay */
-  margin-left:40vw;           /* ⬅ pushes the card right (~40% of viewport) */
+  margin-left:60vw;           /* ⬅ pushes the card right (~40% of viewport) */
   max-width:380px;
   background:rgba(26,42,68,.9);
   color:#fff;
