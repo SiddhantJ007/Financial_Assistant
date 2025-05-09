@@ -24,7 +24,7 @@ header {
 
 /* nav pushed to the far right of the flex row */
 .nav-links{
-  margin-left:160px;          /* ⬅ pushes nav to the right */
+  margin-left:360px;          /* ⬅ pushes nav to the right */
   display:flex;
   gap:32px;
   list-style:none;
@@ -40,10 +40,10 @@ header {
 
 /* ---------- HERO / BACKGROUND ---------- */
 .background-section{
-  height:100vh;
+  height:150vh;
   background:url('advisor_bg.png') center/cover no-repeat;
   display:flex;
-  align-items:center;
+  align-items:left;
   position:relative;
 }
 
@@ -55,7 +55,7 @@ header {
 
 .content-box{
   position:relative;          /* sits above overlay */
-  margin-left:50vw;           /* ⬅ pushes the card right (~40% of viewport) */
+  margin-left:45vw;           /* ⬅ pushes the card right (~40% of viewport) */
   max-width:380px;
   background:rgba(26,42,68,.9);
   color:#fff;
